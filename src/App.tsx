@@ -47,6 +47,12 @@ const GlobalStyles = createGlobalStyle`
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
+  button{
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: inherit;
+  }
 `;
 const Wrapper = styled.div`
     height: 100vh;

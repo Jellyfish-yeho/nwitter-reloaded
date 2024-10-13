@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+    sendPasswordResetEmail,
+    signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../firebase";
 import {
     Form,
@@ -14,6 +17,7 @@ import GithubButton from "../components/github-btn";
 
 export default function CreateAccount() {
     const navigate = useNavigate();
+    //나중에 react-query 로 바꾸기
     const [isLoading, setLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -44,6 +48,13 @@ export default function CreateAccount() {
             setLoading(false);
         }
     };
+    const onSendPwResetEmail = () => {
+        if (!email || email === "") {
+            alert("Please enter your email.");
+            return;
+        }
+        sendPasswordResetEmail(auth, email);
+    };
     return (
         <Wrapper>
             <Title>Log in 𝕏</Title>
@@ -73,6 +84,12 @@ export default function CreateAccount() {
             <Switcher>
                 Don't have an account?{" "}
                 <Link to="/create-account">Create one &rarr;</Link>
+            </Switcher>
+            <Switcher>
+                Forgot your password?{" "}
+                <button onClick={onSendPwResetEmail}>
+                    Send password reset email &rarr;
+                </button>
             </Switcher>
             <GithubButton />
         </Wrapper>

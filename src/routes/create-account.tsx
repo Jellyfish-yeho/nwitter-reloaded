@@ -17,6 +17,7 @@ import GithubButton from "../components/github-btn";
 // }
 
 export default function CreateAccount() {
+    //회원가입 인증 이메일 기능 추가하기
     const navigate = useNavigate();
     const [isLoading, setLoading] = useState(false);
     const [name, setName] = useState("");
