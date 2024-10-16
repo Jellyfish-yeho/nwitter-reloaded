@@ -8,7 +8,7 @@ export default function ProtectedRoute({
 }) {
     //로그인한 user || null
     const user = auth.currentUser;
-    console.log("user:", user);
+    // console.log("user:", user);
     if (user === null) {
         return <Navigate to="/login" />;
     }
